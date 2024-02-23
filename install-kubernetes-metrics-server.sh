@@ -2,8 +2,7 @@
 
 kubernetes_metrics_server_version=0.7.0
 
-is_already_installed="$(kubectl -n kube-system get deployment -l 'k8s-app in (metrics-ser
-ver)' 2>&1)"
+is_already_installed="$(kubectl -n kube-system get deployment -l 'k8s-app in (metrics-server)' 2>&1)"
 
 # echo "$is_already_installed"
 #
