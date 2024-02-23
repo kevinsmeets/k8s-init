@@ -8,7 +8,7 @@ is_already_installed="$(kubectl get all -n kubernetes-dashboard 2>&1)"
 #
 # No resources found in kubernetes-dashboard namespace.
 
-if [ ${is_already_installed:0:2} == "No" ]; then
+if [ "${is_already_installed:0:2}" == "No" ]; then
 	echo "Installing Kubernetes Dashboard..."
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v$kubernetes_dashboard_version/aio/deploy/recommended.yaml
 

@@ -8,7 +8,7 @@ is_already_installed="$(kubectl -n kube-system get deployment -l 'k8s-app in (me
 #
 # No resources found
 
-if [ ${is_already_installed:0:2} == "No" ]; then
+if [ "${is_already_installed:0:2}" == "No" ]; then
 	echo "Installing Kubernetes Metrics Server..."
 	kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v$kubernetes_metrics_server_version/components.yaml
 	kubectl -n kube-system \
