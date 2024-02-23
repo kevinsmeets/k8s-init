@@ -1,3 +1,3 @@
 # k8s-init
 
-![GitHub Actions](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg)
+![GitHub Actions](https://github.com/kevinsmeets/k8s-init/actions/workflows/ci.yml/badge.svg)
