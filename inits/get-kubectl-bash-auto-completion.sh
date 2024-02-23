@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -z "$(dpkg -l | grep bash-completion)" ]; then
+if ! [ grep -q bash-completion)" ]; then
   echo "Package bash-completion is not installed! Running apt-get..."
   sudo apt-get install bash-completion
 else
