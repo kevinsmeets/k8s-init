@@ -11,7 +11,7 @@ echo Is a kubectl configuation file present:
 ls -hal "$HOME/.kube"
 
 if [ -f "$HOME/.kube/config" ]; then
-	number_of_lines=$( cat "$HOME/.kube/config" | wc -l )
+	number_of_lines=$( wc -l < "$HOME/.kube/config" )
 	if [ "$number_of_lines" -gt 3 ]; then
 		echo A ~/.kube/config file is present, exiting in order to prevent overwriting or modification of your kubectl configuration!
 		exit 1
