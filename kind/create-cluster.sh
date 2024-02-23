@@ -5,14 +5,14 @@ if ! [ -f /usr/local/bin/kind ]; then
 fi
 
 echo Is KUBECONFIG environment variable set:
-echo $KUBECONFIG
+echo "$KUBECONFIG"
 
 echo Is a kubectl configuation file present:
-ls -hal $HOME/.kube
+ls -hal "$HOME/.kube"
 
-if [ -f $HOME/.kube/config ]; then
-	number_of_lines=$( cat $HOME/.kube/config | wc -l )
-	if [ $number_of_lines -gt 3 ]; then
+if [ -f "$HOME/.kube/config" ]; then
+	number_of_lines=$( cat "$HOME/.kube/config" | wc -l )
+	if [ "$number_of_lines" -gt 3 ]; then
 		echo A ~/.kube/config file is present, exiting in order to prevent overwriting or modification of your kubectl configuration!
 		exit 1
 	fi
@@ -24,10 +24,10 @@ kubectl version
 
 echo
 echo Please enter a name for your kubernetes cluster:
-read cluster_name
+read -r cluster_name
 
-echo Creating kubernetes cluster named $cluster_name ...
-kind create cluster --name $cluster_name
+echo Creating kubernetes cluster named "$cluster_name" ...
+kind create cluster --name "$cluster_name"
 
 rc=$?
 if [ $rc -ne 0 ]; then
