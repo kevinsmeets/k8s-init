@@ -4,7 +4,9 @@ if [ -f /usr/local/bin/kind ]; then
 	exit 1
 fi
 
-curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.21.0/kind-linux-amd64
+kind_version="0.21.0"
+
+curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v$kind_version/kind-linux-amd64
 
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin
