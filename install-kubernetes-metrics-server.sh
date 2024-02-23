@@ -11,7 +11,11 @@ is_already_installed="$(kubectl -n kube-system get deployment -l 'k8s-app in (me
 if [ ${is_already_installed:0:2} == "No" ]; then
 	echo "Installing Kubernetes Metrics Server..."
 	kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v$kubernetes_metrics_server_version/components.yaml
-	kubectl -n kube-system patch deployment metrics-server --type=json -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+	kubectl -n kube-system \
+		patch \
+		deployment metrics-server \
+		--type=json \
+		-p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
 else
 	echo "Kubernetes Metrics Server already installed"
 fi
