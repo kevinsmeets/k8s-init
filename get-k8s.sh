@@ -17,8 +17,6 @@ inits/get-fluxcd.sh
 inits/get-k9s.sh
 
 kind/create-cluster.sh
-sleep 10
 
 inits/get-kubernetes-metrics-server.sh
 inits/get-kubernetes-dashboard.sh
-
