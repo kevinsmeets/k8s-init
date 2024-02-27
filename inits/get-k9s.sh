@@ -6,7 +6,7 @@ fi
 
 curl -LO "https://github.com/derailed/k9s/releases/download/v0.31.8/k9s_Linux_amd64.tar.gz"
 
-tar xzf k9s_Linux_amd64.tar.gz
+tar xzf k9s_Linux_amd64.tar.gz k9s
 
 sudo mv k9s /usr/local/bin/
 sudo chmod +x /usr/local/bin/k9s
