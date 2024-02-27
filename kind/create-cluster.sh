@@ -27,7 +27,10 @@ echo Please enter a name for your kubernetes cluster:
 read -r cluster_name
 
 echo Creating kubernetes cluster named "$cluster_name" ...
-kind create cluster --name "$cluster_name"
+kind create cluster \
+	--name "$cluster_name" \
+	--config kind/two-node-cluster.yaml \
+	--wait 180s
 
 rc=$?
 if [ $rc -ne 0 ]; then
