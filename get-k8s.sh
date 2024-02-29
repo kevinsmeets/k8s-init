@@ -13,6 +13,7 @@ inits/get-tmux.sh
 inits/get-yq.sh
 inits/get-kubeconform.sh
 inits/get-helm.sh
+inits/get-helm-bash-auto-completion.sh
 inits/get-fluxcd.sh
 inits/get-k9s.sh
 
