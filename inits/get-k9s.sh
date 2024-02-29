@@ -4,7 +4,9 @@ if [ -f /usr/local/bin/k9s ]; then
   exit 1
 fi
 
-curl -LO "https://github.com/derailed/k9s/releases/download/v0.31.8/k9s_Linux_amd64.tar.gz"
+k9s_version="0.31.9"
+
+curl -LO "https://github.com/derailed/k9s/releases/download/v$k9s_version/k9s_Linux_amd64.tar.gz"
 
 tar xzf k9s_Linux_amd64.tar.gz k9s
 
