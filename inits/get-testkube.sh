@@ -4,6 +4,7 @@ if [ -f /usr/local/bin/testkube ]; then
   exit 1
 fi
 
+echo Installing testkube...
 curl -LO "https://github.com/kubeshop/testkube/releases/download/v1.16.26/testkube_1.16.26_Linux_x86_64.tar.gz"
 
 tar xzf testkube_1.16.26_Linux_x86_64.tar.gz kubectl-testkube
