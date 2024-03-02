@@ -22,9 +22,13 @@ docker version
 kind version
 kubectl version
 
-echo
-echo Please enter a name for your kubernetes cluster:
-read -r cluster_name
+cluster_name=$1
+
+if [ -z "$cluster_name" ]; then
+	echo
+	echo Please enter a name for your kubernetes cluster:
+	read -r cluster_name
+fi
 
 echo Creating kubernetes cluster named "$cluster_name" ...
 kind create cluster \
