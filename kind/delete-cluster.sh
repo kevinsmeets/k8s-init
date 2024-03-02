@@ -7,9 +7,13 @@ fi
 echo List of current clusters:
 kind get clusters
 
-echo
-echo Please enter the name for the kubernetes cluster to delete:
-read -r cluster_name
+cluster_name=$1
+
+if [ -z "$cluster_name" ]; then
+	echo
+	echo Please enter the name for the kubernetes cluster to delete:
+	read -r cluster_name
+fi
 
 echo Deleting kubernetes cluster named "$cluster_name" ...
 kind delete cluster --name "$cluster_name"
