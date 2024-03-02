@@ -46,12 +46,14 @@ jobs:
         run: yq --version
       - name: See 'tmux -V'
         run: tmux -V
-      - name: See 'k9s version'
-        run: k9s version
       - name: See 'flux --version'
         run: flux --version
       - name: See 'flux version'
         run: flux version
+      - name: See 'testkube version'
+        run: testkube version
+      - name: See 'k9s version'
+        run: k9s version
       # - name: See 'kubectl top nodes'
       #   run: kubectl top nodes
       # - name: See 'kubectl top pods --all-namespaces'
