@@ -53,7 +53,13 @@ kubectl -n kubernetes-dashboard create token admin-user --duration 12h
 echo
 echo "This is the Kubernetes Dashboard URL:"
 echo "http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"
+echo
 
-echo "Start kubectl proxy..."
-kubectl proxy
+start_kubectl_proxy=$1
 
+if [ -z "$start_kubectl_proxy" ]; then
+	echo "Starting kubectl proxy..."
+	kubectl proxy
+else
+	echo "Run 'kubectl proxy' to access Kubernetes Dashboard"
+fi
