@@ -11,11 +11,9 @@ is_already_installed="$(kubectl get all -n kubernetes-dashboard 2>&1)"
 if [ "${is_already_installed:0:2}" == "No" ]; then
 	echo "Installing Kubernetes Dashboard..."
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v$kubernetes_dashboard_version/aio/deploy/recommended.yaml
-
-	sleep 3
 	kubectl get all -n kubernetest-dashboard
 	echo "Getting things ready..."
-	sleep 10
+	kubectl -n kubernetes-dashboard rollout status deployment kubernetes-dashboard --timeout=3m
 
 # Create a new ServiceAccount
 kubectl apply -f - <<EOF
