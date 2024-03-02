@@ -21,6 +21,6 @@ inits/get-k9s.sh
 
 kind/create-cluster.sh k8s
 
+inits/get-fluxcd-in-kubernetes.sh
 inits/get-kubernetes-metrics-server.sh
 inits/get-kubernetes-dashboard.sh
-inits/get-fluxcd-in-kubernetes.sh
