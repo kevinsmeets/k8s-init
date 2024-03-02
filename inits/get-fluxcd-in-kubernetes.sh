@@ -7,4 +7,6 @@ fi
 echo Installing FluxCD in kubernetes...
 flux install
 
+kubectl -n flux-system rollout status deployment flux-system --timeout=3m
+
 flux --version
