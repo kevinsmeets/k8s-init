@@ -50,10 +50,10 @@ jobs:
         run: k9s version
       - name: See 'flux --version'
         run: flux --version
-      - name: See 'kubectl top nodes'
-        run: kubectl top nodes
-      - name: See 'kubectl top pods --all-namespaces'
-        run: kubectl top pods --all-namespaces
+      # - name: See 'kubectl top nodes'
+      #   run: kubectl top nodes
+      # - name: See 'kubectl top pods --all-namespaces'
+      #   run: kubectl top pods --all-namespaces
       - name: See 'kubectl get all,svc,secrets,pvc,pv --all-namespaces'
         run: kubectl get nodes,all,svc,secrets,pvc,pv --all-namespaces
       - name: Delete k8s cluster
