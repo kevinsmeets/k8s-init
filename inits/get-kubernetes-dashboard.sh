@@ -57,7 +57,7 @@ echo
 
 start_kubectl_proxy=$1
 
-if ! [ -z "$start_kubectl_proxy" ]; then
+if [ -n "$start_kubectl_proxy" ]; then
 	echo "Starting kubectl proxy..."
 	kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
 else
