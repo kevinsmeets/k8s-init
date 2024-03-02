@@ -15,10 +15,10 @@ inits/get-kubeconform.sh
 inits/get-helm.sh
 inits/get-helm-bash-auto-completion.sh
 inits/get-fluxcd.sh
-inits/get-fluxcd-in-kubernetes.sh
 inits/get-k9s.sh
 
 kind/create-cluster.sh k8s
 
 inits/get-kubernetes-metrics-server.sh
 inits/get-kubernetes-dashboard.sh
+inits/get-fluxcd-in-kubernetes.sh
