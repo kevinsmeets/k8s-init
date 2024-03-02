@@ -4,6 +4,9 @@ if ! [ -f /usr/local/bin/kind ]; then
 	exit 1
 fi
 
+echo List of current clusters:
+kind get clusters
+
 echo
 echo Please enter the name for the kubernetes cluster to delete:
 read -r cluster_name
