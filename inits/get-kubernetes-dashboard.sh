@@ -59,7 +59,7 @@ start_kubectl_proxy=$1
 
 if ! [ -z "$start_kubectl_proxy" ]; then
 	echo "Starting kubectl proxy..."
-	kubectl proxy
+	kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
 else
-	echo "Run 'kubectl proxy' to access Kubernetes Dashboard"
+	echo "Run 'kubectl proxy --address 0.0.0.0 --accept-hosts '.*' ' to access Kubernetes Dashboard"
 fi
