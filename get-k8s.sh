@@ -17,7 +17,7 @@ inits/get-helm-bash-auto-completion.sh
 inits/get-fluxcd.sh
 inits/get-k9s.sh
 
-kind/create-cluster.sh
+kind/create-cluster.sh k8s
 
 inits/get-kubernetes-metrics-server.sh
 inits/get-kubernetes-dashboard.sh
