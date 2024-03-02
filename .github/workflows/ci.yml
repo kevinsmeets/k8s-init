@@ -57,4 +57,4 @@ jobs:
       - name: See 'kubectl get all,svc,secrets,pvc,pv --all-namespaces'
         run: kubectl get nodes,all,svc,secrets,pvc,pv --all-namespaces
       - name: Delete k8s cluster
-        run: ${PWD}/kind/delete-cluster.sh
+        run: ${PWD}/kind/delete-cluster.sh k8s
