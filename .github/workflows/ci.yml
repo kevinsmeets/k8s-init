@@ -24,21 +24,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      #- name: Install Docker
-      #  run: ${PWD}/get-docker-on-ubuntu.sh
+      - name: See 'docker version' as provisioned by GitHub
+        run: docker --version
+      - name: Install Docker
+        run: ${PWD}/get-docker-on-ubuntu.sh
       - name: See 'docker version'
         run: docker --version
+      - name: See 'kind --version'
+        run: kind --version
       - name: Install tools and create k8s cluster
         run: ${PWD}/get-k8s.sh
       - name: See 'kind get clusters'
         run: kind get clusters
-      - name: See 'kubectl --version'
-        run: kubectl --version
+      - name: See 'kubectl version'
+        run: kubectl version
+      - name: See 'helm version'
+        run: helm version
+      - name: See 'kubeconform -v'
+        run: kubeconform -v
+      - name: See 'yq --version'
+        run: yq --version
+      - name: See 'tmux -V'
+        run: tmux -V
+      - name: See 'k9s version'
+        run: k9s version
+      - name: See 'flux --version'
+        run: flux --version
       - name: See 'kubectl top nodes'
         run: kubectl top nodes
       - name: See 'kubectl top pods --all-namespaces'
         run: kubectl top pods --all-namespaces
       - name: See 'kubectl get all,svc,secrets,pvc,pv --all-namespaces'
-        run: kubectl get all,svc,secrets,pvc,pv --all-namespaces
+        run: kubectl get nodes,all,svc,secrets,pvc,pv --all-namespaces
       - name: Delete k8s cluster
         run: ${PWD}/kind/delete-cluster.sh
