@@ -11,7 +11,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Check the bash scripts
 jobs:
   shellcheck:
     name: Shellcheck
@@ -20,12 +19,26 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
-  install:
-    name: Install
+  install_and_test:
+    name: Install & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Docker
-        run: ${PWD}/get-docker-on-ubuntu.sh
-      - name: Install K8s
+      #- name: Install Docker
+      #  run: ${PWD}/get-docker-on-ubuntu.sh
+      - name: See 'docker version'
+        run: docker --version
+      - name: Install tools and create k8s cluster
         run: ${PWD}/get-k8s.sh
+      - name: See 'kind get clusters'
+        run: kind get clusters
+      - name: See 'kubectl --version'
+        run: kubectl --version
+      - name: See 'kubectl top nodes'
+        run: kubectl top nodes
+      - name: See 'kubectl top pods --all-namespaces'
+        run: kubectl top pods --all-namespaces
+      - name: See 'kubectl get all,svc,secrets,pvc,pv --all-namespaces'
+        run: kubectl get all,svc,secrets,pvc,pv --all-namespaces
+      - name: Delete k8s cluster
+        run: ${PWD}/kind/delete-cluster.sh
