@@ -50,6 +50,8 @@ jobs:
         run: k9s version
       - name: See 'flux --version'
         run: flux --version
+      - name: See 'flux version'
+        run: flux version
       # - name: See 'kubectl top nodes'
       #   run: kubectl top nodes
       # - name: See 'kubectl top pods --all-namespaces'
