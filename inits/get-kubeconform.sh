@@ -4,6 +4,8 @@ if [ -f /usr/local/bin/kubeconform ]; then
   exit 1
 fi
 
+echo "Installing kubeconform..."
+
 curl -LO "https://github.com/yannh/kubeconform/releases/download/v0.6.4/kubeconform-linux-amd64.tar.gz"
 
 tar xzf kubeconform-linux-amd64.tar.gz
