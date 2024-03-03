@@ -12,22 +12,22 @@ docker --version
 echo
 echo "Create k8s environment..."
 
-inits/get-kind.sh
-inits/get-kubectl.sh
-inits/get-kubectl-bash-auto-completion.sh
-inits/get-kubectl-bash-alias.sh
-inits/get-tmux.sh
-inits/get-yq.sh
-inits/get-kubeconform.sh
-inits/get-helm.sh
-inits/get-helm-bash-auto-completion.sh
-inits/get-fluxcd.sh
-inits/get-k9s.sh
+echo "[INIT]"; inits/get-kind.sh
+echo "[INIT]"; inits/get-kubectl.sh
+echo "[INIT]"; inits/get-kubectl-bash-auto-completion.sh
+echo "[INIT]"; inits/get-kubectl-bash-alias.sh
+echo "[INIT]"; inits/get-tmux.sh
+echo "[INIT]"; inits/get-yq.sh
+echo "[INIT]"; inits/get-kubeconform.sh
+echo "[INIT]"; inits/get-helm.sh
+echo "[INIT]"; inits/get-helm-bash-auto-completion.sh
+echo "[INIT]"; inits/get-fluxcd.sh
+echo "[INIT]"; inits/get-k9s.sh
 
-kind/create-cluster.sh k8s
+echo "[INIT]"; kind/create-cluster.sh k8s
 
-inits/get-fluxcd-in-kubernetes.sh
-inits/get-testkube.sh
-inits/get-testkube-bash-auto-completion.sh
-inits/get-kubernetes-metrics-server.sh
-inits/get-kubernetes-dashboard.sh
+echo "[INIT]"; inits/get-fluxcd-in-kubernetes.sh
+echo "[INIT]"; inits/get-testkube.sh
+echo "[INIT]"; inits/get-testkube-bash-auto-completion.sh
+echo "[INIT]"; inits/get-kubernetes-metrics-server.sh
+echo "[INIT]"; inits/get-kubernetes-dashboard.sh
