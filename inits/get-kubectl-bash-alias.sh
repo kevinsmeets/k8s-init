@@ -9,6 +9,8 @@ if grep -q "k=kubectl" ~/.bashrc; then
   exit 1
 fi
 
+echo "Installing kubectl alias 'k'..."
+
 {
 	# My alias for kubectl
 	echo alias k=kubectl
