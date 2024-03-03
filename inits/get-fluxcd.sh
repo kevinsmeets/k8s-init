@@ -6,4 +6,4 @@ fi
 
 curl -s https://fluxcd.io/install.sh | sudo bash
 
-flux version
+flux --version
