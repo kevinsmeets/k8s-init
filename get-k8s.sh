@@ -1,6 +1,13 @@
 #!/bin/bash
 
-docker version
+echo "Checking if docker is installed.."
+if ! docker_loc="$(type -p "$docker")" || [[ -z $docker_loc ]]; then
+  echo "No docker on this system!"
+  exit 1
+fi
+
+echo "This system has docker!"
+docker --version
 
 echo
 echo "Create k8s environment..."
