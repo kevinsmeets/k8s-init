@@ -4,6 +4,8 @@ if [ -f /usr/local/bin/helm ]; then
   exit 1
 fi
 
+echo "Ïnstalling helm..."
+
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | sudo bash
 
 helm version
