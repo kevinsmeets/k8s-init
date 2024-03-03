@@ -12,4 +12,4 @@ kubectl -n flux-system rollout status deployment/kustomize-controller --timeout=
 kubectl -n flux-system rollout status deployment/notification-controller --timeout=3m
 kubectl -n flux-system rollout status deployment/source-controller --timeout=3m
 
-flux --version
+flux version
