@@ -13,9 +13,8 @@ echo Adding current user to docker group...
 sudo usermod -aG docker "$USER"
 
 echo Make sure docker socket is useable for everyone...
-ls -l /var/run/docker.sock
 sudo chmod 666 /var/run/docker.sock
+ls -l /var/run/docker.sock
 
 echo Running docker --version
 docker --version
-
