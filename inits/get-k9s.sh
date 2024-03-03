@@ -4,7 +4,9 @@ if [ -f /usr/local/bin/k9s ]; then
   exit 1
 fi
 
-k9s_version="0.31.9"
+echo "Installing k9s..."
+
+k9s_version="0.32.0"
 
 curl -LO "https://github.com/derailed/k9s/releases/download/v$k9s_version/k9s_Linux_amd64.tar.gz"
 
