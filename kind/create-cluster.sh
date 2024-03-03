@@ -21,13 +21,6 @@ if [ -f "$HOME/.kube/config" ]; then
 	fi
 fi
 
-echo "docker version:"
-docker version
-echo "kind version:"
-kind version
-echo "kubectl version:"
-kubectl version
-
 cluster_name=$1
 
 if [ -z "$cluster_name" ]; then
