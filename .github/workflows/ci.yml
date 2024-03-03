@@ -30,10 +30,10 @@ jobs:
         run: ${PWD}/get-docker-on-ubuntu.sh
       - name: See 'docker version'
         run: docker --version
-      - name: See 'kind --version'
-        run: kind --version
       - name: Install tools and create k8s cluster
         run: ${PWD}/get-k8s.sh
+      - name: See 'kind --version'
+        run: kind --version
       - name: See 'kind get clusters'
         run: kind get clusters
       - name: See 'kubectl version'
