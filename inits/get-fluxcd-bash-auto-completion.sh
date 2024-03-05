@@ -4,7 +4,7 @@ if [ -f /etc/flux_completion.d/kubectl ]; then
   exit 1
 fi
 
-echo "Installing auto completion for flux."
+echo "Installing auto completion for flux..."
 
 sudo apt-get install bash-completion
 flux completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
