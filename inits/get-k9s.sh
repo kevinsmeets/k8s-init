@@ -37,8 +37,8 @@ if [[ -z $k9s_version ]]; then
     die "Missing parameter --version"
 fi
 
-echo "uninstall_current": $uninstall_current
-echo "k9s_version: "$k9s_version
+echo "uninstall_current: "$uninstall_current
+echo "k9s_version: $k9s_version"
 
 if [[ -f /usr/local/bin/k9s && $uninstall_current == true ]]; then
         sudo rm /usr/local/bin/k9s
