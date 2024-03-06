@@ -4,12 +4,20 @@ uninstall_current=false
 k9s_version=""
 
 function usage {
-	echo "$0 --version <k9s version number>"
+	echo "Install and update k9s."
+	echo
+	echo "https://github.com/derailed/k9s/releases"
+	echo
+	echo "This script uses 'sudo' and will prompt for sudo password when needed;"
+	echo "do not run this script using sudo or root user."
+	echo
+	echo "usage: $0 --version <k9s version number> [--uninstall-current]"
 }
 
 while [ $# -gt 0 ]; do
 	if [[ $1 == "-h" || $1 == "--help" ]]; then
 		usage
+		exit 0
 	elif [[ $1 == "-u" || $1 == "--uninstall-current" ]]; then
 		uninstall_current=true
 	elif [[ $1 == "-v" || $1 == "--version" ]]; then
