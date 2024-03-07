@@ -15,7 +15,7 @@ if [ -z "$cluster_name" ]; then
 	read -r cluster_name
 fi
 
-echo "Deleting kubernetes cluster named $cluster_name..."
+echo "Deleting kubernetes cluster named $cluster_name ..."
 kind delete cluster --name "$cluster_name"
 
 rc=$?
