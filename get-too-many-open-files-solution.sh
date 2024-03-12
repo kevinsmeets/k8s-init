@@ -26,8 +26,14 @@ if [ -z "$present_in_user_config" ]; then
 	echo "DefaultLimitNOFILE=524288:524288" | sudo tee --append /etc/systemd/user.conf
 fi
 
+echo "Changing inotify configuration..."
+present_in_sysctl=$(grep fs.inotify.max_user_instances=256 /etc/sysctl.conf)
+if [ -z "$present_in_sysctl" ]; then
+	echo "fs.inotify.max_user_instances=256" | sudo tee --append /etc/sysctl.conf
+fi
+
 echo "Reloading systemd configuration files..."
 sudo systemctl daemon-reexec
 
-echo "Open a new terminal and try 'ulimit -n'..."
+echo "Open a new terminal and try 'ulimit -n' and 'sysctl fs.inotify.max_user_instances'..."
 
