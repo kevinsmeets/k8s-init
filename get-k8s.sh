@@ -31,4 +31,6 @@ echo "[INIT]"; inits/get-fluxcd-in-kubernetes.sh
 echo "[INIT]"; inits/get-testkube.sh
 echo "[INIT]"; inits/get-testkube-bash-auto-completion.sh
 echo "[INIT]"; inits/get-kubernetes-metrics-server.sh
+echo "[INIT]"; inits/get-kube-state-metrics.sh
 echo "[INIT]"; inits/get-kubernetes-dashboard.sh
+
