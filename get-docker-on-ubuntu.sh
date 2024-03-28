@@ -18,3 +18,8 @@ ls -l /var/run/docker.sock
 
 echo Running docker --version
 docker --version
+
+echo Cleanup
+rm get-docker.sh
+
+echo Done!
