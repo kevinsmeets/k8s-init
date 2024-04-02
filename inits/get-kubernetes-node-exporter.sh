@@ -11,13 +11,14 @@ if [ "${is_already_installed:0:2}" == "No" ]; then
 	exit 1
 fi
 
-if [ ! -f daemonset.yaml ]; then
-	wget https://raw.githubusercontent.com/bibinwilson/kubernetes-node-exporter/main/daemonset.yaml
-	wget https://raw.githubusercontent.com/bibinwilson/kubernetes-node-exporter/main/service.yaml
-fi
+wget https://raw.githubusercontent.com/bibinwilson/kubernetes-node-exporter/main/daemonset.yaml
+wget https://raw.githubusercontent.com/bibinwilson/kubernetes-node-exporter/main/service.yaml
 
 kubectl -n monitoring apply -f daemonset.yaml
 kubectl -n monitoring apply -f service.yaml
 
 kubectl -n monitoring rollout status daemonset node-exporter --timeout=3m
+
+rm daemonset.yaml
+rm service.yaml
 
