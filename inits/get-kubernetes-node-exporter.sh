@@ -1,5 +1,7 @@
 #!/bin/bash
 
+kubectl create namespace monitoring
+
 is_already_installed="$(kubectl get daemonset node-exporter -n monitoring 2>&1)"
 
 echo "$is_already_installed"
