@@ -4,7 +4,7 @@ is_already_installed="$(kubectl get deployment kube-state-metrics -n kube-system
 
 # echo "$is_already_installed"
 
-if [ "${is_already_installed:0:2}" == "No" ]; then
+if [ "${is_already_installed:0:4}" == "NAME" ]; then
 	echo "kube-state-metrics is already installed!"
 	exit 1
 fi

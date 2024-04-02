@@ -6,7 +6,7 @@ is_already_installed="$(kubectl get daemonset node-exporter -n monitoring 2>&1)"
 
 echo "$is_already_installed"
 
-if [ "${is_already_installed:0:2}" == "No" ]; then
+if [ "${is_already_installed:0:4}" == "NAME" ]; then
 	echo "node-exporter is already installed!"
 	exit 1
 fi
