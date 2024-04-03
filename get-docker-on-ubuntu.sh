@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo Install curl...
-sudo apt-get install curl
+sudo apt-get install curl -y
 
 echo Get docker script...
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -19,7 +19,11 @@ ls -l /var/run/docker.sock
 echo Running docker --version
 docker --version
 
-echo Cleanup
+echo Cleanup...
 rm get-docker.sh
+
+echo Install bash completion for docker...
+sudo apt-get install bash-completion -y
+sudo curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker.sh
 
 echo Done!
