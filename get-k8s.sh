@@ -19,6 +19,7 @@ echo "[INIT]"; inits/get-kubectl-bash-alias.sh
 echo "[INIT]"; inits/get-tmux.sh
 echo "[INIT]"; inits/get-yq.sh
 echo "[INIT]"; inits/get-kubeconform.sh
+echo "[INIT]"; inits/get-kustomize.sh
 echo "[INIT]"; inits/get-helm.sh
 echo "[INIT]"; inits/get-helm-bash-auto-completion.sh
 echo "[INIT]"; inits/get-fluxcd.sh
