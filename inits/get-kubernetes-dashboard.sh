@@ -12,6 +12,12 @@ if [ "${is_already_installed:0:2}" == "No" ]; then
 	echo "Installing Kubernetes Dashboard..."
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v$kubernetes_dashboard_version/aio/deploy/recommended.yaml
 	kubectl get all -n kubernetest-dashboard
+	kubectl -n kubernetes-dashboard \
+		patch \
+		deployment kubernetes-dashboard \
+		--type=json \
+		-p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--token-ttl=0"}]'
+
 	echo "Getting things ready..."
 	kubectl -n kubernetes-dashboard rollout status deployment kubernetes-dashboard --timeout=3m
 
