@@ -44,6 +44,8 @@ jobs:
         run: kubeconform -v
       - name: See 'kustomize version'
         run: kustomize version
+      - name: See 'kubetail version'
+        run: kubetail --version
       - name: See 'yq --version'
         run: yq --version
       - name: See 'tmux -V'
