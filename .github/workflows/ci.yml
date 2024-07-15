@@ -46,6 +46,8 @@ jobs:
         run: kustomize version
       - name: See 'kubetail --version'
         run: kubetail --version
+      - name: See 'jq --version'
+        run: jq --version
       - name: See 'yq --version'
         run: yq --version
       - name: See 'tmux -V'

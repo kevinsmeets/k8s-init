@@ -18,6 +18,7 @@ echo "[INIT]"; inits/get-kubectl.sh
 echo "[INIT]"; inits/get-kubectl-bash-auto-completion.sh
 echo "[INIT]"; inits/get-kubectl-bash-alias.sh
 echo "[INIT]"; inits/get-tmux.sh
+echo "[INIT]"; inits/get-jq.sh
 echo "[INIT]"; inits/get-yq.sh
 echo "[INIT]"; inits/get-kubeconform.sh
 echo "[INIT]"; inits/get-kustomize.sh
