@@ -12,7 +12,7 @@ docker --version
 echo
 echo "Create k8s environment..."
 
-echo "[INIT]"; inits/get-kind.sh --version 0.25.0
+echo "[INIT]"; inits/get-kind.sh --version 0.29.0
 echo "[INIT]"; inits/get-kind-bash-auto-completion.sh
 echo "[INIT]"; inits/get-kubectl.sh
 echo "[INIT]"; inits/get-kubectl-bash-auto-completion.sh
@@ -29,7 +29,7 @@ echo "[INIT]"; inits/get-helm.sh
 echo "[INIT]"; inits/get-helm-bash-auto-completion.sh
 echo "[INIT]"; inits/get-fluxcd.sh
 echo "[INIT]"; inits/get-fluxcd-bash-auto-completion.sh
-echo "[INIT]"; inits/get-k9s.sh --version 0.40.10
+echo "[INIT]"; inits/get-k9s.sh --version 0.50.7
 
 echo "[INIT]"; kind/create-cluster.sh k8s
 
