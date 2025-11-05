@@ -30,7 +30,7 @@ echo "[INIT]"; inits/get-helm.sh
 echo "[INIT]"; inits/get-helm-bash-auto-completion.sh
 echo "[INIT]"; inits/get-fluxcd.sh
 echo "[INIT]"; inits/get-fluxcd-bash-auto-completion.sh
-echo "[INIT]"; inits/get-k9s.sh --version 0.50.9
+echo "[INIT]"; inits/get-k9s.sh --version 0.50.16
 
 echo "[INIT]"; kind/create-cluster.sh k8s
 
