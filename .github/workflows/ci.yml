@@ -46,6 +46,8 @@ jobs:
         run: kustomize version
       - name: See 'kubetail --version'
         run: kubetail --version
+      - name: See 'kubescape version'
+        run: kubescape version
       - name: See 'jq --version'
         run: jq --version
       - name: See 'yq --version'
@@ -68,3 +70,4 @@ jobs:
         run: kubectl get nodes,all,svc,secrets,pvc,pv --all-namespaces
       - name: Delete k8s cluster
         run: ${PWD}/kind/delete-cluster.sh k8s
+

@@ -20,6 +20,7 @@ echo "[INIT]"; inits/get-kubectl-bash-alias.sh
 echo "[INIT]"; inits/get-kubectx.sh
 echo "[INIT]"; inits/get-kubens.sh
 echo "[INIT]"; inits/get-kubent.sh
+echo "[INIT]"; inits/get-kubescape.sh
 echo "[INIT]"; inits/get-tmux.sh
 echo "[INIT]"; inits/get-jq.sh
 echo "[INIT]"; inits/get-yq.sh
