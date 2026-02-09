@@ -48,6 +48,8 @@ jobs:
         run: kubetail --version
       - name: See 'kubescape version'
         run: kubescape version
+      - name: See 'ktop --help'
+        run: ktop --help | grep -q "Runs ktop (standalone)" ; echo $?
       - name: See 'jq --version'
         run: jq --version
       - name: See 'yq --version'
