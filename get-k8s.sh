@@ -12,7 +12,7 @@ docker --version
 echo
 echo "Create k8s environment..."
 
-echo "[INIT]"; inits/get-kind.sh --version 0.29.0
+echo "[INIT]"; inits/get-kind.sh --version 0.31.0
 echo "[INIT]"; inits/get-kind-bash-auto-completion.sh
 echo "[INIT]"; inits/get-ctop.sh
 echo "[INIT]"; inits/get-dive.sh
