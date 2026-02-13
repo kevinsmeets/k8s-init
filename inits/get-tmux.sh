@@ -2,6 +2,6 @@
 
 echo "Installing tmux..."
 
-sudo apt-get install tmux
+sudo apt-get install tmux -y
 
 tmux -V
