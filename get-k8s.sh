@@ -14,6 +14,7 @@ echo "Create k8s environment..."
 
 echo "[INIT]"; inits/get-kind.sh --version 0.29.0
 echo "[INIT]"; inits/get-kind-bash-auto-completion.sh
+echo "[INIT]"; inits/get-ctop.sh
 echo "[INIT]"; inits/get-kubectl.sh
 echo "[INIT]"; inits/get-kubectl-bash-auto-completion.sh
 echo "[INIT]"; inits/get-kubectl-bash-alias.sh
