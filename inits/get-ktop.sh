@@ -11,8 +11,6 @@ ARCHIVE=ktop_v"$VERSION"_linux_amd64.tar.gz
 URL=https://github.com/vladimirvivien/ktop/releases/download/v"$VERSION"/"$ARCHIVE"
 
 
-echo "$URL"
-
 curl -LO "$URL"
 
 tar -xzf "$ARCHIVE" ktop
