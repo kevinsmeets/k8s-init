@@ -60,6 +60,8 @@ jobs:
         run: flux --version
       - name: See 'flux version'
         run: flux version
+      - name: See 'cilium version --client'
+        run: cilium version --client
       - name: See 'testkube version'
         run: testkube version
       - name: See 'k9s version'
