@@ -69,7 +69,8 @@ function install_tool {
     echo "Installing $tool_name..."
 
     work_dir="$(mktemp -d)"
-    trap 'rm -rf -- "$work_dir"' EXIT
+    # shellcheck disable=SC2064
+    trap "$(printf 'rm -rf -- %q' "$work_dir")" EXIT
     download_tool
     [[ -s "$work_dir/$tool_name" ]] || die "Download did not produce $tool_name"
     sudo install -o root -g root -m 0755 "$work_dir/$tool_name" "$destination"

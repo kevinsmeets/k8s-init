@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
-test_dir="$(mktemp -d)"
+test_dir="$(mktemp -d "${TMPDIR:-/tmp}/tool installer's tests.XXXXXXXXXX")"
 trap 'rm -rf -- "$test_dir"' EXIT
 
 export INSTALL_DIR="$test_dir/bin"
@@ -55,7 +55,9 @@ function expect_failure {
 }
 
 function assert_clean {
-    [[ -z "$(find "$TMPDIR" -mindepth 1 -print -quit)" ]] || fail "$script_name left temporary files"
+    if [[ -n "$(find "$TMPDIR" -mindepth 1 -print -quit)" ]]; then
+        fail "$script_name left temporary files (phase: ${MOCK_FAILURE:-success}): $(< "$test_dir/output")"
+    fi
 }
 
 specs=(
