@@ -16,7 +16,7 @@ jobs:
     name: ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
       - name: Test installer behavior offline
@@ -25,7 +25,7 @@ jobs:
     name: Install & Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: See 'docker version' as provisioned by GitHub
         run: docker --version
       - name: Install Docker
