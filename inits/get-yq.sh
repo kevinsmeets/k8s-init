@@ -1,12 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/yq ]; then
-  echo "yq already installed!"
-  exit 1
-fi
 
-echo "Installing yq..."
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-sudo chmod a+x /usr/local/bin/yq
+tool_name=yq
+releases_url="https://github.com/mikefarah/yq/releases"
+version_args=(--version)
 
-yq --version
+function download_tool {
+    curl -fL "$releases_url/download/v$tool_version/yq_linux_amd64" -o "$work_dir/yq"
+}
+
+install_tool "$@"

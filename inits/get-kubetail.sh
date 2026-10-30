@@ -1,16 +1,14 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kubetail ]; then
-  echo "kubetail already installed!"
-  exit 1
-fi
 
-echo Installing kubetail...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-curl -LO "https://raw.githubusercontent.com/johanhaleby/kubetail/master/kubetail"
+tool_name=kubetail
+releases_url="https://github.com/johanhaleby/kubetail/releases"
+version_args=(--version)
 
-chmod +x kubetail
+function download_tool {
+    curl -fL "https://raw.githubusercontent.com/johanhaleby/kubetail/$tool_version/kubetail" -o "$work_dir/kubetail"
+}
 
-sudo mv kubetail /usr/local/bin/kubetail
-
-kubetail --version
+install_tool "$@"
 

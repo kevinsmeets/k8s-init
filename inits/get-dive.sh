@@ -1,23 +1,14 @@
 #!/bin/bash
-if [ -f /usr/local/bin/dive ]; then
-  echo "dive already installed!"
-  exit 1
-fi
 
-echo Installing dive...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-VERSION="0.13.1"
-ARCHIVE=dive_"$VERSION"_linux_amd64.tar.gz
-URL=https://github.com/wagoodman/dive/releases/download/v"$VERSION"/"$ARCHIVE"
+tool_name=dive
+releases_url="https://github.com/wagoodman/dive/releases"
+version_args=(version)
 
-curl -LO "$URL"
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/dive_${tool_version}_linux_amd64.tar.gz" dive
+}
 
-tar -xzf "$ARCHIVE" dive
-rm "$ARCHIVE"
-
-chmod +x dive
-
-sudo mv dive /usr/local/bin/
-
-dive version
+install_tool "$@"
 

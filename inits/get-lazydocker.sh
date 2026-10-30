@@ -1,23 +1,14 @@
 #!/bin/bash
-if [ -f /usr/local/bin/lazydocker ]; then
-  echo "lazydocker already installed!"
-  exit 1
-fi
 
-echo Installing lazydocker...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-VERSION="0.24.4"
-ARCHIVE=lazydocker_"$VERSION"_Linux_x86_64.tar.gz
-URL=https://github.com/jesseduffield/lazydocker/releases/download/v"$VERSION"/"$ARCHIVE"
+tool_name=lazydocker
+releases_url="https://github.com/jesseduffield/lazydocker/releases"
+version_args=(--version)
 
-curl -LO "$URL"
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/lazydocker_${tool_version}_Linux_x86_64.tar.gz" lazydocker
+}
 
-tar -xzf "$ARCHIVE" lazydocker
-rm "$ARCHIVE"
-
-chmod +x lazydocker
-
-sudo mv lazydocker /usr/local/bin/
-
-lazydocker version
+install_tool "$@"
 

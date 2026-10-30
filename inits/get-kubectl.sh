@@ -1,15 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kubectl ]; then
-  echo "kubectl already installed!"
-  exit 1
-fi
 
-echo Installing kubectl...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+tool_name=kubectl
+releases_url="https://github.com/kubernetes/kubernetes/releases"
+version_args=(version --client)
 
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+function download_tool {
+    curl -fL "https://dl.k8s.io/release/v$tool_version/bin/linux/amd64/kubectl" -o "$work_dir/kubectl"
+}
 
-rm kubectl
-
-kubectl version --client
+install_tool "$@"

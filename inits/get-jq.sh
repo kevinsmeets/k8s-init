@@ -1,13 +1,14 @@
 #!/bin/bash
-if [ -f /usr/local/bin/jq ]; then
-  echo "jq already installed!"
-  exit 1
-fi
 
-echo "Installing jq..."
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-sudo wget -qO /usr/local/bin/jq https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
-sudo chmod a+x /usr/local/bin/jq
+tool_name=jq
+releases_url="https://github.com/jqlang/jq/releases"
+version_args=(--version)
 
-jq --version
+function download_tool {
+    curl -fL "$releases_url/download/jq-$tool_version/jq-linux-amd64" -o "$work_dir/jq"
+}
+
+install_tool "$@"
 

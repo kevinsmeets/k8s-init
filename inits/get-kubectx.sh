@@ -1,15 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kubectx ]; then
-  echo "kubectx already installed!"
-  exit 1
-fi
 
-echo Installing kubectx...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-curl -LO "https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubectx"
+tool_name=kubectx
+releases_url="https://github.com/ahmetb/kubectx/releases"
+version_args=(--help)
 
-sudo install -o root -g root -m 0755 kubectx /usr/local/bin/kubectx
+function download_tool {
+    curl -fL "$releases_url/download/v$tool_version/kubectx" -o "$work_dir/kubectx"
+}
 
-rm kubectx
-
-kubectx --help
+install_tool "$@"

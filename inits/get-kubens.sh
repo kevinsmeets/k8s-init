@@ -1,15 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kubens ]; then
-  echo "kubens already installed!"
-  exit 1
-fi
 
-echo Installing kubens...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-curl -LO "https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubens"
+tool_name=kubens
+releases_url="https://github.com/ahmetb/kubectx/releases"
+version_args=(--help)
 
-sudo install -o root -g root -m 0755 kubens /usr/local/bin/kubens
+function download_tool {
+    curl -fL "$releases_url/download/v$tool_version/kubens" -o "$work_dir/kubens"
+}
 
-rm kubens
-
-kubens --help
+install_tool "$@"

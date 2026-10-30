@@ -1,26 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kubescape ]; then
-  echo "kubescape already installed!"
-  exit 1
-fi
 
-echo Installing kubescape...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-VERSION="4.0.0"
-ARCHIVE=kubescape_"$VERSION"_linux_amd64.tar.gz
-URL=https://github.com/kubescape/kubescape/releases/download/v"$VERSION"/"$ARCHIVE"
+tool_name=kubescape
+releases_url="https://github.com/kubescape/kubescape/releases"
+version_args=(version)
 
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/kubescape_${tool_version}_linux_amd64.tar.gz" kubescape
+}
 
-echo "$URL"
-
-curl -LO "$URL"
-
-tar -xzf "$ARCHIVE" kubescape
-rm "$ARCHIVE"
-
-chmod +x kubescape
-
-sudo mv kubescape /usr/local/bin/
-
-kubescape version
-
+install_tool "$@"

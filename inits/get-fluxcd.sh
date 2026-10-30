@@ -1,11 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/flux ]; then
-  echo "flux already installed!"
-  exit 1
-fi
 
-echo "Installing flux..."
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-curl -s https://fluxcd.io/install.sh | sudo bash
+tool_name=flux
+releases_url="https://github.com/fluxcd/flux2/releases"
+version_args=(--version)
 
-flux --version
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/flux_${tool_version}_linux_amd64.tar.gz" flux
+}
+
+install_tool "$@"

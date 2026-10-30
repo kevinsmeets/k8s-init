@@ -1,24 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/ktop ]; then
-  echo "ktop already installed!"
-  exit 1
-fi
 
-echo Installing ktop...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-VERSION="0.5.3"
-ARCHIVE=ktop_v"$VERSION"_linux_amd64.tar.gz
-URL=https://github.com/vladimirvivien/ktop/releases/download/v"$VERSION"/"$ARCHIVE"
+tool_name=ktop
+releases_url="https://github.com/vladimirvivien/ktop/releases"
+version_args=(version)
 
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/ktop_v${tool_version}_linux_amd64.tar.gz" ktop
+}
 
-curl -LO "$URL"
-
-tar -xzf "$ARCHIVE" ktop
-rm "$ARCHIVE"
-
-chmod +x ktop
-
-sudo mv ktop /usr/local/bin/
-
-ktop version
-
+install_tool "$@"

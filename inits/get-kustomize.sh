@@ -1,19 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kustomize ]; then
-  echo "kustomize already installed!"
-  exit 1
-fi
 
-kustomize_version="5.4.1"
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-echo Installing kustomize...
+tool_name=kustomize
+releases_url="https://github.com/kubernetes-sigs/kustomize/releases"
+version_args=(version)
 
-curl -Lo kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v"$kustomize_version"/kustomize_v"$kustomize_version"_linux_amd64.tar.gz
+function download_tool {
+    download_archive "$releases_url/download/kustomize/v$tool_version/kustomize_v${tool_version}_linux_amd64.tar.gz" kustomize
+}
 
-tar -xzf kustomize.tar.gz
-chmod +x kustomize
-sudo mv ./kustomize /usr/local/bin/
-
-rm kustomize.tar.gz
-
-kustomize version
+install_tool "$@"

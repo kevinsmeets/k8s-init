@@ -1,20 +1,14 @@
 #!/bin/bash
-if [ -f /usr/local/bin/ctop ]; then
-  echo "ctop already installed!"
-  exit 1
-fi
 
-echo Installing ctop...
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-VERSION="0.7.7"
-BIN=ctop-"$VERSION"-linux-amd64
-URL=https://github.com/bcicen/ctop/releases/download/v"$VERSION"/"$BIN"
+tool_name=ctop
+releases_url="https://github.com/bcicen/ctop/releases"
+version_args=(-v)
 
-curl -LO "$URL"
+function download_tool {
+    curl -fL "$releases_url/download/v$tool_version/ctop-$tool_version-linux-amd64" -o "$work_dir/ctop"
+}
 
-chmod +x $BIN
-
-sudo mv $BIN /usr/local/bin/ctop
-
-ctop -v
+install_tool "$@"
 

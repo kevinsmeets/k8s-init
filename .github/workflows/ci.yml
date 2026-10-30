@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v6
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
+      - name: Test installer behavior offline
+        run: bash tests/tool-installers.sh
   install_and_test:
     name: Install & Test
     runs-on: ubuntu-latest

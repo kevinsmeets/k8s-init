@@ -1,18 +1,13 @@
 #!/bin/bash
-if [ -f /usr/local/bin/kubeconform ]; then
-  echo "kubeconform already installed!"
-  exit 1
-fi
 
-echo "Installing kubeconform..."
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-curl -LO "https://github.com/yannh/kubeconform/releases/download/v0.6.4/kubeconform-linux-amd64.tar.gz"
+tool_name=kubeconform
+releases_url="https://github.com/yannh/kubeconform/releases"
+version_args=(-v)
 
-tar xzf kubeconform-linux-amd64.tar.gz
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/kubeconform-linux-amd64.tar.gz" kubeconform
+}
 
-sudo install -o root -g root -m 0755 kubeconform /usr/local/bin/kubeconform
-
-rm kubeconform
-rm kubeconform-linux-amd64.tar.gz
-
-kubeconform -v
+install_tool "$@"

@@ -1,18 +1,14 @@
 #!/bin/bash
-if [ -f /usr/local/bin/testkube ]; then
-  echo "testkube already installed!"
-  exit 1
-fi
 
-echo Installing testkube...
-curl -LO "https://github.com/kubeshop/testkube/releases/download/v1.16.26/testkube_1.16.26_Linux_x86_64.tar.gz"
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib/tool-installer.sh"
 
-tar xzf testkube_1.16.26_Linux_x86_64.tar.gz kubectl-testkube
+tool_name=testkube
+binary_name=kubectl-testkube
+releases_url="https://github.com/kubeshop/testkube/releases"
+version_args=(version)
 
-sudo mv kubectl-testkube /usr/local/bin/kubectl-testkube
-sudo chmod +x /usr/local/bin/kubectl-testkube
-sudo ln -s /usr/local/bin/kubectl-testkube /usr/local/bin/testkube
+function download_tool {
+    download_archive "$releases_url/download/v$tool_version/testkube_${tool_version}_Linux_x86_64.tar.gz" kubectl-testkube
+}
 
-rm testkube_1.16.26_Linux_x86_64.tar.gz
-
-testkube version
+install_tool "$@"
