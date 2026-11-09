@@ -1,11 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "schedule": ["before 3am on Monday"],
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^k8s-init/versions\\.env$"],
+      "managerFilePatterns": [
+        "/^k8s-init/versions\\.env$/"
+      ],
       "matchStrings": [
         "(?<depName>KIND)_VERSION=(?<currentValue>[^\\s]+)#.*kubernetes-sigs/kind",
         "(?<depName>CTOP)_VERSION=(?<currentValue>[^\\s]+)#.*bcicen/ctop",
@@ -40,15 +42,19 @@
     },
     {
       "description": "Group Kubernetes core and sigs tools",
-      "matchPackagePatterns": ["^kubernetes(-sigs)?/"],
       "groupName": "Kubernetes Core & SIGs",
-      "schedule": ["before 3am on Monday"]
+      "schedule": ["before 3am on Monday"],
+      "matchPackageNames": [
+        "/^kubernetes(-sigs)?//"
+      ]
     },
     {
       "description": "Group Infrastructure and Platform tools",
-      "matchPackagePatterns": ["^(fluxcd|cilium)/"],
       "groupName": "Infrastructure Tools",
-      "schedule": ["before 3am on Monday"]
+      "schedule": ["before 3am on Monday"],
+      "matchPackageNames": [
+        "/^(fluxcd|cilium)//"
+      ]
     }
   ]
 }
