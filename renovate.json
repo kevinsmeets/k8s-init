@@ -5,30 +5,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^k8s-init/versions\\.env$/"
-      ],
+      "managerFilePatterns": ["/^versions\\.env$/"],
       "matchStrings": [
-        "(?<depName>KIND)_VERSION=(?<currentValue>[^\\s]+)#.*kubernetes-sigs/kind",
-        "(?<depName>CTOP)_VERSION=(?<currentValue>[^\\s]+)#.*bcicen/ctop",
-        "(?<depName>DIVE)_VERSION=(?<currentValue>[^\\s]+)#.*wagoodman/dive",
-        "(?<depName>LAZYDOCKER)_VERSION=(?<currentValue>[^\\s]+)#.*jesseduffield/lazydocker",
-        "(?<depName>KUBECTL)_VERSION=(?<currentValue>[^\\s]+)#.*kubernetes/kubernetes",
-        "(?<depName>KUBECTX)_VERSION=(?<currentValue>[^\\s]+)#.*ahmetb/kubectx",
-        "(?<depName>KUBENS)_VERSION=(?<currentValue>[^\\s]+)#.*ahmetb/kubectx",
-        "(?<depName>KUBENT)_VERSION=(?<currentValue>[^\\s]+)#.*doitintl/kube-no-trouble",
-        "(?<depName>KUBESCAPE)_VERSION=(?<currentValue>[^\\s]+)#.*kubescape/kubescape",
-        "(?<depName>KTOP)_VERSION=(?<currentValue>[^\\s]+)#.*vladimirvivien/ktop",
-        "(?<depName>JQ)_VERSION=(?<currentValue>[^\\s]+)#.*jqlang/jq",
-        "(?<depName>YQ)_VERSION=(?<currentValue>[^\\s]+)#.*mikefarah/yq",
-        "(?<depName>KUBECONFORM)_VERSION=(?<currentValue>[^\\s]+)#.*yannh/kubeconform",
-        "(?<depName>KUSTOMIZE)_VERSION=(?<currentValue>[^\\s]+)#.*kubernetes-sigs/kustomize",
-        "(?<depName>KUBETAIL)_VERSION=(?<currentValue>[^\\s]+)#.*johanhaleby/kubetail",
-        "(?<depName>HELM)_VERSION=(?<currentValue>[^\\s]+)#.*helm/helm",
-        "(?<depName>FLUXCD)_VERSION=(?<currentValue>[^\\s]+)#.*fluxcd/flux2",
-        "(?<depName>CILIUM)_VERSION=(?<currentValue>[^\\s]+)#.*cilium/cilium-cli",
-        "(?<depName>K9S)_VERSION=(?<currentValue>[^\\s]+)#.*derailed/k9s",
-        "(?<depName>TESTKUBE)_VERSION=(?<currentValue>[^\\s]+)#.*kubeshop/testkube"
+        "(?:^|\\r?\\n)[A-Z][A-Z0-9_]*_VERSION=(?<currentValue>[^\\s#]+)[ \\t]+#[ \\t]*(?<depName>[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)"
       ],
       "datasourceTemplate": "github-releases",
       "versioningTemplate": "semver"
