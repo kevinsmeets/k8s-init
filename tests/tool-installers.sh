@@ -75,8 +75,8 @@ specs=(
     'kubetail|kubetail||https://raw.githubusercontent.com/johanhaleby/kubetail/1.2.3/kubetail|--version'
     'kustomize|kustomize|kustomize|https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v1.2.3/kustomize_v1.2.3_linux_amd64.tar.gz|version'
     'lazydocker|lazydocker|lazydocker|https://github.com/jesseduffield/lazydocker/releases/download/v1.2.3/lazydocker_1.2.3_Linux_x86_64.tar.gz|--version'
-    'ktop|ktop|ktop|https://github.com/vladimirvivien/ktop/releases/download/v1.2.3/ktop_v1.2.3_linux_amd64.tar.gz|version'
-    'testkube|testkube|kubectl-testkube|https://github.com/kubeshop/testkube/releases/download/v1.2.3/testkube_1.2.3_Linux_x86_64.tar.gz|version'
+    'ktop|ktop|ktop|https://github.com/vladimirvivien/ktop/releases/download/v1.2.3/ktop_v1.2.3_linux_amd64.tar.gz|--help'
+    'testkube|testkube|kubectl-testkube|https://github.com/kubeshop/testkube/releases/download/v1.2.3/testkube_1.2.3_Linux_x86_64.tar.gz|--help'
     'yq|yq||https://github.com/mikefarah/yq/releases/download/v1.2.3/yq_linux_amd64|--version'
 )
 
