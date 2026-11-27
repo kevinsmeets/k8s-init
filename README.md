@@ -33,6 +33,54 @@ This single command:
 3. Creates a local KinD cluster named `k8s`
 4. Installs cluster components (Flux CD, metrics server, Kubernetes Dashboard, etc.)
 
+### Use the toolbox image instead
+
+To work with an existing cluster without installing tools on the host, use
+`ghcr.io/kevinsmeets/k8s-tools`. The image contains all 20 CLIs pinned in
+[`versions.env`](./versions.env), plus Bash, tmux and the Docker client. It runs
+as a non-root user (UID 1000) and does not create a cluster. Only `linux/amd64`
+is supported because the installers currently download AMD64 binaries.
+
+```bash
+image=ghcr.io/kevinsmeets/k8s-tools:latest
+docker pull "$image"
+docker run --rm "$image" kubectl version --client
+docker run --rm -it "$image"    # interactive Bash
+
+# Use your existing kubeconfig without copying it into the image
+docker run --rm -it -e KUBECONFIG=/tmp/kubeconfig \
+  --mount "type=bind,src=$HOME/.kube/config,dst=/tmp/kubeconfig,readonly" \
+  "$image" k9s
+```
+
+The kubeconfig must be readable by the container user. If it references external
+certificate files or an authentication plugin, those must also be available in
+the container. The API server must be reachable from inside the container:
+`127.0.0.1` normally refers to the container, not the host. Docker-backed tools
+such as KinD need access to a separately supplied Docker daemon; the image does
+not start one or mount the host socket.
+
+The [image workflow](./.github/workflows/tools-image.yml) builds and tests the
+image on pull requests to `main` without publishing. On a push to `main`
+(including a merged Renovate update), it publishes the tested image to GHCR as
+`latest` and `sha-<full-commit>`. Use the SHA tag or image digest when you need a
+specific build. For anonymous pulls, the package owner must make the GHCR
+package public after the first publish.
+
+To reproduce the image check locally from the repository root:
+
+```bash
+docker buildx build --platform linux/amd64 --load -t k8s-tools:local .
+docker run --rm -i --network none \
+  --mount "type=bind,src=$PWD/versions.env,dst=/tmp/versions.env,readonly" \
+  k8s-tools:local bash -s < tests/tools-image.sh
+```
+
+If your network uses a private HTTPS proxy CA, add
+`--secret id=build-ca-bundle,src=/etc/ssl/certs/ca-certificates.crt` to the build
+command, using the path to your trusted PEM bundle. It is mounted only while
+downloading the tools and is not included in the image.
+
 ## Tool Installation
 
 ### Individual Tool Installation
@@ -114,10 +162,11 @@ bash tests/tool-installers.sh
 ### CI Checks
 
 - **ShellCheck** — Validates shell script syntax and best practices
-- **Tool Installer Tests** — Exercises all 20 installers with mocked downloads and real extraction
-- **Integration Tests** — Validates full setup workflow (when CI runs on main branch)
+- **Tool Installer Tests** — Exercise the shared-library installers with mocked downloads and real extraction
+- **Integration Tests** — Validate the host setup against a live KinD cluster
+- **Toolbox Image Test** — Builds with real downloads, then checks the final image offline, including its non-root user, CLI availability, Testkube alias and pinned kubectl, Helm and k9s versions
 
-The test suite runs offline with mocked downloads, ensuring reliability without external dependencies. All CI results are visible in [GitHub Actions](https://github.com/kevinsmeets/k8s-init/actions).
+All CI results are visible in [GitHub Actions](https://github.com/kevinsmeets/k8s-init/actions).
 
 ## Architecture
 
@@ -179,7 +228,7 @@ To add or update a tool:
 1. Create or update the installer script in `inits/get-<tool>.sh`
 2. Add/update the version in `versions.env`
 3. Update `get-k8s.sh` to include the tool
-4. Add tests to `tests/tool-installers.sh`
+4. Add installer tests to `tests/tool-installers.sh` and add new CLI names to `tests/tools-image.sh`
 5. Run `bash tests/tool-installers.sh` locally
 6. Submit a pull request
 
